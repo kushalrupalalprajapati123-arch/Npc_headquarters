@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090d">
+  <title>NPC Headquarters — Enter the Chaos</title>
+  <meta name="description" content="NPC Headquarters — Where fictional worlds collide, egos clash, and strangers become lore.">
+  <style>
+    :root {
+      --bg: #09090d; --panel: #13131b; --panel2: #1b1b26; --text: #f5f5f7;
+      --muted: #a4a4b3; --accent: #a855f7; --accent2: #ec4899; --line: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(9,9,13,.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 900; letter-spacing: .08em; font-size: 15px; }
+    .brand span { color: #c084fc; }
+    .navlinks { display: flex; gap: 26px; color: var(--muted); font-size: 13px; }
+    .navlinks a:hover { color: white; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 20px; border-radius: 8px; background: linear-gradient(110deg,var(--accent),var(--accent2)); color: white; font-weight: 800; font-size: 14px; border: 0; box-shadow: 0 8px 30px rgba(168,85,247,.22); transition: transform .2s, filter .2s; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+    .btn.secondary { background: rgba(255,255,255,.07); border: 1px solid var(--line); box-shadow: none; }
+    .hero { min-height: 620px; display: grid; align-items: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .hero:before { content:""; position:absolute; inset:0; background: radial-gradient(ellipse at 75% 35%,rgba(168,85,247,.24),transparent 35%), radial-gradient(ellipse at 20% 75%,rgba(236,72,153,.13),transparent 35%); pointer-events:none; }
+    .hero:after { content:"NPC"; position:absolute; right:-30px; bottom:-105px; font-size: clamp(180px,34vw,440px); font-weight:1000; letter-spacing:-.12em; color:rgba(255,255,255,.025); line-height:1; pointer-events:none; }
+    .hero-content { position:relative; z-index:1; max-width:760px; padding: 90px 0; }
+    .eyebrow { color:#d8b4fe; text-transform:uppercase; letter-spacing:.22em; font-size:11px; font-weight:800; }
+    h1 { font-size:clamp(48px,8vw,92px); line-height:.94; letter-spacing:-.065em; margin:20px 0; font-weight:950; }
+    h1 em { font-style:normal; background:linear-gradient(100deg,#c084fc,#f0abfc,#fb7185); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .lead { color:#c1c1ce; font-size:clamp(16px,2vw,19px); line-height:1.75; max-width:620px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .tiny { color:var(--muted); font-size:12px; margin-top:18px; }
+    section { padding:82px 0; }
+    .section-head { max-width:650px; margin-bottom:34px; }
+    h2 { font-size:clamp(30px,5vw,48px); letter-spacing:-.045em; margin:10px 0 12px; }
+    .sub { color:var(--muted); line-height:1.7; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .tile { min-height:190px; padding:25px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(145deg,var(--panel2),var(--panel)); }
+    .tile .ico { font-size:25px; }
+    .tile h3 { margin:18px 0 8px; font-size:18px; }
+    .tile p { margin:0; color:var(--muted); line-height:1.65; font-size:14px; }
+    .banner { border:1px solid rgba(192,132,252,.25); border-radius:18px; padding:clamp(28px,5vw,52px); background:radial-gradient(ellipse at 90% 0%,rgba(168,85,247,.2),transparent 45%),var(--panel); display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .banner h2 { margin-top:0; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:step; }
+    .step { border-top:1px solid var(--line); padding:22px 10px 0 0; }
+    .step b { color:#c084fc; font-size:12px; letter-spacing:.12em; }
+    .step h3 { margin:12px 0 8px; }
+    .step p { color:var(--muted); font-size:14px; line-height:1.65; margin:0; }
+    footer { border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:12px; }
+    footer .foot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    @media(max-width:760px) { .navlinks { display:none; } .grid,.steps { grid-template-columns:1fr; } .hero { min-height:560px; } .banner { align-items:flex-start; flex-direction:column; } section { padding:64px 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#">NPC <span>HEADQUARTERS</span></a>
+        <div class="navlinks"><a href="#about">About</a><a href="#inside">What's inside</a><a href="#join">Join us</a></div>
+        <a class="btn" data-telegram href="#join">Join Telegram ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">A community beyond the screen</div>
+          <h1>WELCOME TO<br><em>NPC HEADQUARTERS.</em></h1>
+          <p class="lead">Where fictional worlds collide, egos clash, and strangers become lore. Enter as a stranger. Leave as a story.</p>
+          <div class="actions">
+            <a class="btn" data-telegram href="#join">Join the Telegram community ↗</a>
+            <a class="btn secondary" href="#inside">Explore HQ</a>
+          </div>
+          <p class="tiny">Anime energy. Random thoughts. Unfiltered community chaos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Not just another group chat</div>
+          <h2>Your next favourite corner of the internet.</h2>
+          <p class="sub">NPC Headquarters brings people together through shared interests, ridiculous debates, creative posts, and the kind of conversations that turn into inside jokes.</p>
+        </div>
+        <div class="grid">
+          <article class="tile"><div class="ico">🌌</div><h3>Different personalities</h3><p>Meet people with different takes, interests, humour, and perspectives.</p></article>
+          <article class="tile"><div class="ico">⚡</div><h3>Unlimited topics</h3><p>From anime debates to random thoughts, polls, memes, and unexpected discussions.</p></article>
+          <article class="tile"><div class="ico">🗝️</div><h3>Make your own lore</h3><p>Join conversations, take part in community activities, and become part of the story.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="inside">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Inside the headquarters</div>
+          <h2>There's always something happening.</h2>
+          <p class="sub">A place to participate, not just scroll.</p>
+        </div>
+        <div class="grid">
+          <article class="tile"><div class="ico">🎭</div><h3>Anime debates & battles</h3><p>Share your takes, defend your favourites, and challenge the community.</p></article>
+          <article class="tile"><div class="ico">🧠</div><h3>Quizzes & challenges</h3><p>Test your knowledge and see how your answers compare with everyone else.</p></article>
+          <article class="tile"><div class="ico">🎲</div><h3>Random thoughts</h3><p>Unexpected questions and conversations that can go absolutely anywhere.</p></article>
+          <article class="tile"><div class="ico">😂</div><h3>Memes & moments</h3><p>Share the posts, jokes, and reactions that deserve a place in the timeline.</p></article>
+          <article class="tile"><div class="ico">🏆</div><h3>Community events</h3><p>Join polls, weekly activities, competitions, and leaderboard-style challenges.</p></article>
+          <article class="tile"><div class="ico">💬</div><h3>Meet the community</h3><p>Find your people and turn casual conversations into lasting friendships.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="wrap">
+        <div class="banner">
+          <div>
+            <div class="eyebrow">Your entrance starts here</div>
+            <h2>Ready to enter the HQ?</h2>
+            <p class="sub">Tap below and join NPC Headquarters on Telegram.</p>
+          </div>
+          <a class="btn" data-telegram href="#join">Join on Telegram ↗</a>
+        </div>
+        <p class="tiny">Replace the placeholder Telegram URL in the website settings before publishing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot"><span>© <span id="year"></span> NPC Headquarters. All rights reserved.</span><span>Enter as a stranger. Leave as a story.</span></div>
+  </footer>
+  <script>
+    // Replace this with your real public Telegram channel or group invite link.
+    const TELEGRAM_LINK = "https://t.me/NPCHEADQUARTERS1038";
+    document.querySelectorAll("[data-telegram]").forEach(link => link.href = TELEGRAM_LINK);
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
